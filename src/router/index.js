@@ -37,107 +37,144 @@ export const constantRouterMap = [
       component: () => import('@/views/dashboard/index')
     }]
   },
-
   {
-    path: '/example',
+    path: '',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/dashboard',
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard-2',
+        meta: { title: '首页', icon: 'home' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/student',
     component: Layout,
+    redirect: '/student/student-info/info-table',
+    name: 'Student',
+    meta: { title: '学生管理', icon: 'student' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        path: 'student-info',
+        name: 'StudentInfo',
+        component: () => import('@/views/student/studentInfo/index'),
+        redirect: '/student/student-info/info-table',
+        meta: { title: '信息管理', icon: 'info' },
         children: [
           {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            path: 'info-table',
+            name: 'InfoTable',
+            component: () => import('@/views/student/studentInfo/infoTable'),
+            meta: { title: '学生信息管理', icon: 'student-info' }
           },
           {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            path: 'info-upload',
+            name: 'InfoUpload',
+            component: () => import('@/views/student/studentInfo/infoUpload'),
+            meta: { title: '上传学生信息', icon: 'excel' }
           }
         ]
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'score-table',
+        name: 'ScoreTable',
+        component: () => import('@/views/student/scoreTable'),
+        meta: { title: '成绩管理', icon: 'score' }
+      },
+      {
+        path: 'score-chart',
+        name: 'ScoreChart',
+        component: () => import('@/views/student/scoreChart'),
+        meta: { title: '成绩图表', icon: 'chart' }
       }
     ]
   },
 
   {
-    path: 'external-link',
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/info-table',
+    name: 'Teacher',
+    meta: { title: '教师管理', icon: 'teacher' },
+    children: [
+      {
+        path: 'info-table',
+        name: 'TeacherTable',
+        component: () => import('@/views/teacher/infoTable'),
+        meta: { title: '教师信息管理', icon: 'teacher-info' }
+      },
+      {
+        path: 'info-upload',
+        name: 'TeacherUpload',
+        component: () => import('@/views/teacher/infoUpload'),
+        meta: { title: '上传教师信息', icon: 'excel' }
+      }
+    ]
+  },
+
+  {
+    path: '/rotation-img',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'index',
+        name: 'RotationImg',
+        component: () => import('@/views/rotationImg/rotationTable'),
+        meta: { title: '轮播图管理', icon: 'rotation-img' }
+      }
+    ]
+  },
+
+  {
+    path: '/subject',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Subject',
+        component: () => import('@/views/subject/subjectTable'),
+        meta: { title: '科目管理', icon: 'subject' }
+      }
+    ]
+  },
+
+  {
+    path: '/feedback',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Feedback',
+        component: () => import('@/views/feedback/feedbackTable'),
+        meta: { title: '留言管理', icon: 'feedback' }
+      }
+    ]
+  },
+
+  {
+    path: 'my-homepage',
+    component: Layout,
+    children: [
+      {
+        path: 'http://maweitao.top',
+        meta: { title: '个人主页', icon: 'link' }
+      }
+    ]
+  },
+
+  {
+    path: '/test',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Test',
+        component: () => import('@/views/test/index'),
+        meta: { title: '测试页面', icon: 'test' }
       }
     ]
   },
